@@ -1,0 +1,17 @@
+#counter {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#qtyValue p {
+  color: #192a56;
+  font-size: 50px;
+}
+
+#qtyBtns {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
