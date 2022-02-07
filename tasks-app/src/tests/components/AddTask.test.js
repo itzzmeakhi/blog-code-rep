@@ -1,19 +1,19 @@
 import {
-  render,
   screen
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import { renderWithState } from './../utils';
 import AddTask from '../../components/AddTask/AddTask';
 
 test('input field rendered with correct label', () => {
-  render(<AddTask />);
+  renderWithState(<AddTask />);
   const inputElem = screen.getByRole('textbox', { name: 'Task' });
   expect(inputElem).toBeInTheDocument();
 });
 
 test('input field value changes wrt to type events', () => {
-  render(<AddTask />);
+  renderWithState(<AddTask />);
   const inputElem = screen.getByRole('textbox', { name: 'Task' });
 
   userEvent.clear(inputElem);
@@ -24,8 +24,14 @@ test('input field value changes wrt to type events', () => {
   expect(inputElem.value).toBe('');
 });
 
-test('button element rendered with correct name', () => {
-  render(<AddTask />);
+test('add button element rendered with correct name', () => {
+  renderWithState(<AddTask />);
   const btnElem = screen.getByRole('button', { name: 'Add Task' });
+  expect(btnElem).toBeInTheDocument();
+});
+
+test('dummy tasks button rendered on screen', () => {
+  renderWithState(<AddTask />);
+  const btnElem = screen.getByRole('button', { name: 'Load dummy data' });
   expect(btnElem).toBeInTheDocument();
 });
